@@ -14,23 +14,26 @@ app.post("/sinup", async (req, resp) => {
   try {
     let result = User(req.body);
     result = await result.save();
-    resp.send(result);
+    return resp.status(200).json(result);
   } catch (error) {
-    resp.send(error);
+    return resp.status(500).json(error);
   }
 });
 
 // login api
 app.post("/login", async (req, resp) => {
   try {
-    let result = await User.findOne(req.body);
+    let result = await User.findOne({
+      email :req.body.email,
+      password : req.body.password
+    });
     if (result) {
-      resp.send(result);
+      return resp.status(200).json(result);
     } else {
-      resp.send("Data did not match");
+      return resp.status(500).json("Data did not match");
     }
   } catch (error) {
-    console.log(error);
+    return resp.status(500).json(error);
   }
 });
 

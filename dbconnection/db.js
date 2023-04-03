@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-
+const ConnectionUrl = "mongodb+srv://Dikshant:dikshant@cluster0.0dw6hb1.mongodb.net/?retryWrites=true&w=majority"
 mongoose
-  .connect("mongodb://127.0.0.1:27017/p1")
+  .connect(ConnectionUrl)
   .then(() => console.log("Connected to database"))
   .catch((error) => console.log(error));
