@@ -4,6 +4,7 @@ const User = require("./dbconnection/model");
 const cors = require("cors");
 
 const app = express();
+const Port = process.env.PORT || 2222
 
 // MOST IMPORTANT ROUTE
 app.use(express.json());
@@ -37,4 +38,4 @@ app.post("/login", async (req, resp) => {
   }
 });
 
-app.listen(2222);
+app.listen(Port);
